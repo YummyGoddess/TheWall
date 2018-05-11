@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Personal Wall</title>
+</head>
+<body>
+  <h1>My Lovely Wall</h1>
+  <form class="createUser" action="/createUser" method="POST">
+    <input class="login" type="text" name="login" value="Create Username">
+    <input class="password" type="password" name="password" value="password">
+    <input type="submit" name="submit" value="login">
+
+
+  </form>
+  <form action="/post" method="POST">
+    <input class="wall_post" type="textarea" name="message" value="message">
+    <input type="submit" name="post" value="post">
+  </form>
+  <form action="/comment" method="POST">
+    <input class="comment" type="textarea" name="comment" value="comment">
+    <input class="submit" type="submit" name="submit" value="comment">
+  </form>
+  <form action="/reply" method="POST">
+    <input clas="reply" type="textarea" name="reply" value="reply">
+    <input type="submit" class="submit" name="submit" value="reply">
+  </form>
+  <form action="/edit" method="POST">
+    <input type="textarea" class="edit" name="edit" value="edit">
+    <input type="submit" class="submit" name="submit" value"edit/delete">
+
+  </form>
+</body>
+</html>
