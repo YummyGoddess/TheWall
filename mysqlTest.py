@@ -3,8 +3,8 @@ from flask import Flask
 from mysqlconnection import connectToMySQL
 app = Flask(__name__)
 # invoke the connectToMySQL function and pass it the name of the database we're using
-# connectToMySQL returns an instance of MySQLConnection, which we will store in the variable 'mysql'
-mysql = connectToMySQL('thegreatwall')
+# connectToMySQL returns an- instance of MySQLConnection, which we will store in the variable 'mysql'
+mysql = connectToMySQL('theGreatwall')
 # now, we may invoke the query_db method
 @app.route('/')
 def index():

@@ -1,21 +1,22 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_bcrypt import Bcrypt
-from mysqlconnection import MySQLConnector
-import md5
+from mysqlconnection import connectToMySQL
 
-mysql = MySQLConnector(app,'the_wall')
+
+mysql = connectToMySQL('theGreatwall')
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app) # creating an object called bcrypt
 app.secret_key = '1fish2fishredfishbluefish' #setting secret key
 @app.route('/')
-def index():
-    return render_template("index.html")
+@app.route('/users')
+def index(user=None):
+    return render_template("user.html", user=user)
 
 
 @app.route('/login', methods=['POST'])
 def login():
-    query = "SELECT * FROM users where email = :email"
+    query = "SELECT * FROM users where email = email;"
 
     data = { "username" : request.form['username'],
              "password_hash" : pw_hash }
