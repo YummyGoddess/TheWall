@@ -80,6 +80,37 @@ def register():
     flash('Registered successfully. Please login')
     return redirect('/')
 
+@app.route('/message',methods=['POST'])
+def message():
+    message = request.form['message']
+    query = 'INSERT INTO `messages` (`user_id`, `message`, `create_time`, `update_time`) VALUES (:user_id, :message, now(), now() );'
+    data = {
+            'user_id': session['userid'],
+            'message': message,
+        }
+    mysql.query_db(query, data)
+    flash('Message Submitted.')
+    return redirect('/')
+
+app.route('/comment',methods=['POST'])
+def comment():
+    comment = request.form['comment']
+    message_id = request.form['messageID']
+
+    query = 'INSERT INTO `comments` (`message_id`, `user_id`, `comment`, `create_time`, `update_time`) VALUES (:message_id, :user_id, :comment, now(), now());'
+    data = {
+            'message_id': message_id,
+            'user_id': session['userid'],
+            'comment': comment,
+        }
+    mysql.query_db(query, data)
+    flash('Comment Added.')
+    return redirect('/wall')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
 
 
 # @app.route('/createUser', methods=['POST'])
