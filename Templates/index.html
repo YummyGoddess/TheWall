@@ -9,24 +9,31 @@
 </head>
 
 <body>
-  <h1>My Lovely Wall</h1>
-  <form class="createUser" action="/createUser" method="POST">
-    <input class="login" type="email" name="username" placeholder="email">
-    <input class="password" type="password" name="password" placeholder="password">
-    <input type="submit" name="submit" value="login">
+  <div class="wrapper">
+    <div class="container">
+      <h1>My Lovely Wall</h1>
+      <h2>User login</h2>
+      <form class="createUser" action="/login" method="POST">
+        <input class="login" type="email" name="email" placeholder="email">
+        <input class="password" type="password" name="password" placeholder="password">
+        <input type="submit" name="submit" value="login">
 
 
-  </form>
-
-  <form class="userRegistration" action="/register" method="post">
-    <p>Registration:</p>
-    <p>First Name: <input type="text" name="first_name" placeholder="First Name"></p>
-    <p>Last Name: <input type="text" name="last_name" placeholder="Last Name"></p>
-    <p>Email Address: <input type="text" name="email" placeholder="Email Address"></p>
-    <p>Password: <input type="password" name="password" placeholder="Password"></p>
-    <p>Confirm Password: <input type="password" name="confirm_password" placeholder="Confirm Password"></p>
-    <input class="submit_btn" type="submit" value="submit">
-  </form>
+      </form>
+    </div>
+    <div class="container">
+      <h2>Register</h2>
+      <form class="userRegistration" action="/register" method="POST">
+        <p>Registration:</p>
+        <p>First Name: <input type="text" name="first_name" placeholder="First Name"></p>
+        <p>Last Name: <input type="text" name="last_name" placeholder="Last Name"></p>
+        <p>Email Address: <input type="text" name="email" placeholder="Email Address"></p>
+        <p>Password: <input type="password" name="password" placeholder="Password"></p>
+        <p>Confirm Password: <input type="password" name="confirm_password" placeholder="Confirm Password"></p>
+        <input class="submit_btn" type="submit" name="submit" value="submit">
+      </form>
+    </div>
+  </div>
 
   <!-- <form action="/post" method="POST">
     <input class="wall_post" type="textarea" name="message" value="message">
