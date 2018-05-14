@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <div class="wrapper">
     <div class="header">
@@ -14,12 +16,17 @@
     <div class="profilePic"></div>
     <div class="mainBody"></div>
     <div class="postWindow">
-      <form class="formWindo" action="user.html" method="post">
-        <input type="textarea" name="post" placeholder="What's on your mind, {{user}}?">
-        <input class="submit" type="submit" name="submit" value="Post">
+      <form class="formWindo" action="user.html" method="POST">
+        <input type="textarea" name="message" placeholder="What's on your mind, {{user}}?">
+        <input class="submit" type="submit" name="submit" value="POST">
+      </form>
+      <form class="formWindo" action="user.html" method="POST">
+        <input type="textarea" name="comment" placeholder="Would you like to reply, {{user}}?">
+        <input class="submit" type="submit" name="submit" value="POST">
       </form>
     </div>
   </div>
   <!-- <h1> Hello {{user}} </h1> -->
 </body>
+
 </html>
