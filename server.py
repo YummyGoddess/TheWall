@@ -50,8 +50,12 @@ def login():
 
 @app.route('/wall')
 def wall():
+    query = "SELECT * FROM messages"
+    posts = mysql.query_db(query)
 
-    return "KING IN THE NORTH!"
+
+    print(posts)
+    return render_template('wall.html',posts=posts)
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -83,14 +87,14 @@ def register():
 @app.route('/message',methods=['POST'])
 def message():
     message = request.form['message']
-    query = 'INSERT INTO `messages` (`user_id`, `message`, `create_time`, `update_time`) VALUES (:user_id, :message, now(), now() );'
+    query = f"INSERT INTO `messages` (`user_id`, `message`, `create_time`, `update_time`) VALUES ('{session['userid']}', '{message}', NOW(), NOW() );"
     data = {
             'user_id': session['userid'],
             'message': message,
         }
     mysql.query_db(query, data)
     flash('Message Submitted.')
-    return redirect('/')
+    return redirect('/wall')
 
 app.route('/comment',methods=['POST'])
 def comment():

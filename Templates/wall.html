@@ -9,6 +9,10 @@
 </head>
 
 <body>
+  {% for post in posts %}
+  {{post.get("message")}}
+  {% endfor %}
+
   <div class="wrapper">
     <div class="header">
       <h1>Profile:</h1>
@@ -16,13 +20,13 @@
     <div class="profilePic"></div>
     <div class="mainBody"></div>
     <div class="postWindow">
-      <form class="formWindo" action="user.html" method="POST">
+      <form class="formWindow" action="/message" method="POST">
         <input type="textarea" name="message" placeholder="What's on your mind, {{user}}?">
-        <input class="submit" type="submit" name="submit" value="POST">
+        <input class="submit" type="submit" name="submit" value="submit">
       </form>
-      <form class="formWindo" action="user.html" method="POST">
+      <form class="formWindow" action="/comment" method="POST">
         <input type="textarea" name="comment" placeholder="Would you like to reply, {{user}}?">
-        <input class="submit" type="submit" name="submit" value="POST">
+        <input class="submit" type="submit" name="submit" value="submit">
       </form>
     </div>
   </div>
