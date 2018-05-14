@@ -36,7 +36,7 @@ def login():
             return redirect('/wall')
         else:
             print(hashlib.md5(bytePassword).hexdigest())
-            flash("login incorrect")
+
             return redirect('/')
 
 
@@ -52,6 +52,34 @@ def login():
 def wall():
 
     return "KING IN THE NORTH!"
+
+@app.route('/register', methods=['POST'])
+def register():
+
+    email = request.form['email']
+    password = request.form['password']
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    bytePassword = password.encode()
+    hashPassword=hashlib.md5(bytePassword).hexdigest()
+
+    session['first_name'] = first_name
+    session['last_name'] = last_name
+    session['email'] = email
+    session['password'] = hashPassword
+
+    data = {
+                'first_name': session['first_name'],
+                'last_name': session['last_name'],
+                'email': session['email'],
+                'password_hash': session['password']
+            }
+    query = f"INSERT INTO users (email, password_hash, created_time, updated_time,first_name,last_name) VALUES('{email}','{hashPassword}',NOW(),NOW(),'{first_name}','{last_name}')"
+
+    mysql.query_db(query, data)
+    flash('Registered successfully. Please login')
+    return redirect('/')
+
 
 
 # @app.route('/createUser', methods=['POST'])
@@ -73,11 +101,12 @@ def wall():
 #     flash("You could not be loggin in")
 #     return redirect('/')
 
-@app.route('/users', methods=['POST'])
-def create():
-    print(request.form)
-    print('Name', request.form[name])
-    print('')
+#CANNOT USE /users as a name!!!!!!
+# @app.route('/users', methods=['POST'])
+# def create():
+#     print(request.form)
+#     print('Name', request.form[name])
+#     print('')
 
 if __name__ =="__main__":
     app.run(debug=True)
